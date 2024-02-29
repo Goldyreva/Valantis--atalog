@@ -5,6 +5,7 @@ import ProductItem from "../components/productItem/ProductItem";
 import Pagination from "../components/pagination/Pagination";
 import Loader from "../components/loader/Loader";
 import {useSelector} from "react-redux";
+import FilterForm from "../components/filterForm/FilterForm";
 
 const ProductsPage = () => {
  const productIds = useSelector(state => state.productIds)
@@ -28,6 +29,7 @@ const ProductsPage = () => {
 
   return (
    <div>
+    <FilterForm/>
 
     <div className="flex justify-start flex-wrap">
      {
