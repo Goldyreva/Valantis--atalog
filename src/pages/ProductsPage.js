@@ -8,38 +8,49 @@ import {useSelector} from "react-redux";
 import FilterForm from "../components/filterForm/FilterForm";
 
 const ProductsPage = () => {
- const productIds = useSelector(state => state.productIds)
+ const products = useSelector(state => state.products)
  const pages = useSelector(state => state.pages)
  
  const [productsArray, setProductsArray] = useState([])
- const [isLoading, setLoading] = useState(false)
- 
+ const [isLoading, setLoading] = useState(true)
+ const [isFoundIds, setFoundIds] = useState(true)
+
+ //запрос на обновление товаров при изменении массива идентификаторов
  useEffect(() => {
   setLoading(true)
   const fetchData = async () => {
-   if(pages.pagesCount > 0){
-    let items = await getItems(pages.currentPage - 1, productIds.ids)
+   if(products.ids.length > 0){
+    let items = await getItems(pages.currentPage - 1, products.ids)
     setProductsArray(items)
-    setLoading(false)
+    setFoundIds(true)
+   }else {
+    setFoundIds(false)
    }
+   setLoading(false)
   }
   
   fetchData()
- }, [pages.currentPage, pages.pagesCount])
+ }, [products.ids])
 
   return (
-   <div>
+   <div className="sm:px-5 px-2">
     <FilterForm/>
 
     <div className="flex justify-start flex-wrap">
      {
     isLoading ?
     <Loader/>
-   : productsArray.map(product =>
-     <ProductItem product={product} />
-     )}
+   : isFoundIds
+     ? productsArray.map(product =>
+         <ProductItem product={product} key={product.id}/>
+       )
+     : <div className="font-semibold mx-auto my-2">По вашему запросу товары не найдены</div>}
     </div>
-    <Pagination/>
+    {
+    isFoundIds
+    ? <Pagination/>
+     : <></>
+    }
    </div>
    );
  };
