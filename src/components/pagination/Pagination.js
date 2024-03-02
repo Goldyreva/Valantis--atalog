@@ -5,14 +5,15 @@ import PagesButton from "../pagesButton/PagesButton";
 
 const Pagination = () => {
  const pages = useSelector(state => state.pages)
+
  const [pagesArray, setPagesArray] = useState([])
 
  //подсчет количества страниц
  useEffect(() => {
   setPagesArray(getPagesArray(pages.pagesCount))
- }, [pages.pagesCount, pages.pagesCount])
+ }, [pages.pagesCount])
     return (
-     <div className="flex justify-center w-full flex-wrap">
+     <div className="flex justify-center w-full flex-wrap py-4">
       {
       pages.currentPage !== 1
       ?<PagesButton text={'<'} btnKey={'previousBtn'}/>

@@ -106,12 +106,19 @@ export const getIdsByFilter = async (product, price, brand) => {
 //получение id по определенному фильтру
 export const getIdsByFilterField = async (filter, value) => {
     let res = undefined
+    let body = ''
+
+    if(filter === priceFilter) {
+        body = `{"action": "filter","params": {"${filter}": ${value}}}`
+    } else{
+        body = `{"action": "filter","params": {"${filter}": "${value}"}}`
+    }
 
     while (res === undefined) {
         try {
             res = await $host.post(
                 "",
-                JSON.parse(`{"action": "filter","params": {"${filter}": "${value}"}}`)
+                JSON.parse(body)
             );
         } catch (e) {
             if (e.response.data !== undefined)

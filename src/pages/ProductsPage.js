@@ -6,6 +6,8 @@ import Pagination from "../components/pagination/Pagination";
 import Loader from "../components/loader/Loader";
 import {useSelector} from "react-redux";
 import FilterForm from "../components/filterForm/FilterForm";
+import GradientLine from "../components/gradientLine/GradientLine";
+import Header from "../components/header/Header";
 
 const ProductsPage = () => {
  const products = useSelector(state => state.products)
@@ -30,13 +32,14 @@ const ProductsPage = () => {
   }
   
   fetchData()
- }, [products.ids])
+ }, [products.ids, pages.currentPage])
 
   return (
-   <div className="sm:px-5 px-2">
+   <div>
+    <Header/>
     <FilterForm/>
-
-    <div className="flex justify-start flex-wrap">
+   <GradientLine/>
+    <div className="flex justify-start flex-wrap py-4 sm:px-5 px-2">
      {
     isLoading ?
     <Loader/>
@@ -48,7 +51,7 @@ const ProductsPage = () => {
     </div>
     {
     isFoundIds
-    ? <Pagination/>
+    ? <><GradientLine/> <Pagination/></>
      : <></>
     }
    </div>
