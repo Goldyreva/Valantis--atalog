@@ -10,11 +10,8 @@ export const pagesSlice = createSlice({
     reducers: {
         setPagesCount: (state, action) => {
             state.pagesCount = action.payload
-//            console.log(state)
         },
         setCurrentPage: (state, action) => {
-            console.log(action.payload)
-            console.log(state.currentPage)
             if(action.payload === '<' && state.currentPage > 1){
                 state.currentPage -= 1
             } else if (action.payload === '>' && state.currentPage < state.pagesCount){
@@ -22,7 +19,6 @@ export const pagesSlice = createSlice({
             } else if (action.payload > 0 && action.payload <= state.pagesCount) {
                 state.currentPage = action.payload
             } 
-            console.log(state.currentPage)
         }
     }
 })
