@@ -6,6 +6,6 @@ let timestamp = moment().format("YYYYMMDD");
 let auth = md5(`Valantis_${timestamp}`);
 
 export const $host = axios.create({
-    baseURL: 'http://api.valantis.store:40000/',
+    baseURL: 'https://api.valantis.store:41000/',
     headers: {'X-Auth': auth}
 });
