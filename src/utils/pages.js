@@ -1,5 +1,4 @@
-
-
+//функция подсчета страниц
 export const getPagesArray = (pageCount) => {
     let result = [];
     for (let i = 0; i < pageCount; i++) {

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ProductItem = ({product}) => {
-// console.log(product)
     return (
      <div className="p-2 md:w-1/3 sm:w-1/2 w-full">
       <div className="p-2 flex flex-col justify-between border border-blue-500 w-full h-full rounded-xl shadow-md">

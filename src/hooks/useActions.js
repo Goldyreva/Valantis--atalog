@@ -1,9 +1,8 @@
-import {actions as productsActions} from "../../store/products/products.slice";
-import {actions  as pagesActions} from "../../store/pages/pages.slice";
+import {actions as productsActions} from "../store/products/products.slice";
+import {actions  as pagesActions} from "../store/pages/pages.slice";
 import {useDispatch} from "react-redux";
 import {bindActionCreators} from "@reduxjs/toolkit";
 import {useMemo} from "react";
-
 
 const rootActions = {
     ...productsActions,

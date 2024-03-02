@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useSelector} from "react-redux";
-import {getIds, getIdsByFilter, getItems} from "../../api/products/products";
-import {useActions} from "../hooks/useActions";
+import {getIds, getIdsByFilter} from "../../api/products/products";
+import {useActions} from "../../hooks/useActions";
 
 const FilterForm = () => {
     const products = useSelector(state => state.products)
@@ -41,7 +41,7 @@ const FilterForm = () => {
     }
 
     return (
-        <div className="py-8 px-2 flex justify-between items-end flex-wrap md:flex-nowrap">
+        <div className="py-5 sm:px-7 px-4 flex justify-between items-end flex-wrap md:flex-nowrap">
             <div className="w-full flex flex-col items-start md:mb-0 mb-4">
                 <label htmlFor="searchInput" className="font-semibold">Название:</label>
                 <input type="text" placeholder="Search..." className="w-full mr-2 p-2 rounded-xl shadow-md border border-blue-500" id="searchInput" name="searchInput" onChange={handleChange}  />
@@ -61,7 +61,7 @@ const FilterForm = () => {
                         }
                     </select>
                 </div>
-            <div className={`md:w-[100px] sm:w-1/5 w-full md:mt-0 mt-4 h-full px-3 py-2 border border-blue-500 rounded-xl shadow-md cursor-pointer bg-blue-200`} onClick={submitForm}>
+            <div className="md:w-[100px] sm:w-1/5 w-full md:mt-0 mt-4 h-full px-3 py-2 border border-blue-500 rounded-xl shadow-md cursor-pointer bg-blue-200 transition linear delay-100 hover:bg-blue-100 hover:shadow-lg active:bg-blue-500 active:text-white" onClick={submitForm}>
                 Поиск
             </div>
 
